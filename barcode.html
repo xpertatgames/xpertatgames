@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Croods Store Front</title>
+    <style>
+
+        #products-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 250px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            border-radius: 5px;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .product-info p {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .price {
+            font-weight: bold;
+        }
+        body {
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+    <label>Barcode</h1><br>
+    <input id="barcode"></input>
+
+    <div id="products-container">
+
+    </div>
+
+    <script>
+        fetch('https://fakestoreapi.com/products')
+            .then(res=>res.json())
+            .then(json=>console.log(json));
+
+        let barcodeEl = document.getElementById('barcode');
+        
+        const products = new Map();
+        products.set("026229560101", {
+            id: 1,
+            title: 'Notebook',
+            price: 29.99,
+            category: 'Electronics',
+            description: 'This is a fantastic product you won\'t want to miss!',
+            image: '026229560101.webp'
+        });
+
+        products.set("026229560101", {price: '$14', category: 'General Merchandize', description: 'Notebook', title: "Notebook", image: '026229560101.webp'});
+        products.set("9780761160953",  {price: '$23', category: 'General Merchandize', description: 'Science Notebook', title: "Science Notebook", image: '9780761160953.jpg'});
+        products.set("lpnpmcl4312656", {price: '$156', category: 'General Merchandize', description: 'Barcode Scanner', title: "Barcode Scanner", image: 'LPNPMCL4312656.webp'});
+        products.set("4244386", {price: '$14', category: 'General Merchandize', description: 'curious george', title: "curious george", image: 'circus.png'});
+        products.set("073796267452", {price: '$19', category: 'General Merchandize', description: 'OMRON Blood pressure monitor', title: "OMRON Blood pressure monitor", image: 'omron.png'});
+        products.set("9781118008188", {price: '$34', category: 'General Merchandize', description: 'HTML&CSS coding book', title: "HTML&CSS coding book", image: 'HTML&CSS.png' });
+        products.set("9780761160915", {price: '$55', category: 'General Merchandize', description: 'English Language Arts book', title: "English Language Arts book", image: 'arts.png'});
+        products.set("071301047803", {price: '$2',  title: "sunBeam sandwich bread twin pack", image: 'fff.png'});
+        products.set("9781639383740", {price: '$14', title: "Muscle cars book", image: 'fgg.png'});
+        products.set("9781435141438", {price: '$50', title: "how the body works book", image: 'fhh.png'});
+        products.set("076808008890", {price: '$52', title: "barilla thin spaghetti 4-2 LB boxes", image: 'ddr.png'});
+        products.set("096619183074", {price: '$90', title: 'Kirkland wildflower honey', image: 'ddr2.png'});
+        products.set("048228221777", {price: '$140', title: "BEAR by john schoenherr", image: 'Bear.png '});
+        products.set("096619937349", {price: '$16', title: "Kirkland organic tomato sauce 12 cans", image: 'ssd.png'});
+        products.set("041331060400", {price: '$14', title: "Goya red kindney beans 8 pack", image: 'ssd.png'});
+        products.set("072613461035", {price: '$24', title: 'All laundry soap', image: 'ded.png'});
+        products.set("300870866448", {price: '$13', title: 'enfamil vitamin D drops', image: 'zxz.png' });
+        products.set("302990241334", {price: '$6', title: 'cetaphil moisturizinf lotion sensitive skin', image: 'nmn.png'});
+        products.set("381370036647", {price: '$15', title: 'aveeno baby daily moisture lotion', image: 'hh.png'});
+        products.set("195616000077", {price: '$2', title: 'rico baby wipes rich moisture',image: 'dfg.png'});
+        products.set("305213079004", {price: '$10', title: 'vaseline intensive care nourishing lotion moisture 48h', image: '==.png'}
+        products.set("077890332030", {price: '$1', title: 'wegmans reusable shopping bag', image: 'we.png'});
+        products.set("096619062454", "kirkland diapers size 6 132 pack");
+        products.set("010343950627", "epson printer et-3760");
+        products.set("077890514023", "wegmans children multivitamin 60 gummies");
+        products.set("9780062304346", "pete the cat and the missing cupcake book Kimberly & James Dean");
+        products.set("078742026602", "equate anitbatierial hand 40 wipes fresh scent");
+        products.set("041331060417", "goya garbanzo chickpeas 8 pack");
+        products.set("077890501986", "wegmans spring water 4 gallons");
+        products.set("019100170773", "jergens soothing aloe cucumber extract and aloe vera refreshing moisturizer ");
+        products.set("312547171571", "benadryl extra strength itch stopping gel");
+        products.set("9781394164684", "html css & javascript all in one paul mecfedries book");
+        products.set("077890513606", "wegmans tissues");
+        products.set("024600017077", "morton coarse kosher salt");
+        products.set("036800165915", "topcare etra strength pain relief 150 caplets for adults");
+        products.set("041736010116", "filippo berio extra virgin olive oil 3 liters");
+        products.set("EKK0054DG", " ymclub stroller");
+        products.set("194253387718", "apple ipad 10th generation 64gb wifi");
+        products.set("B-OK8-63683-9", "scholastic peppa pig learning to share book");
+        products.set("043100345657", "mead 2 pocket green folder");
+        products.set("844106031083", "pen+gear blue folder");
+        products.set("714760819139", "k2 premium salt pink himalayan seasopned salt with onion and grinder top");
+        products.set("077890548790", "wegmans laundry detergent summer breeze scent 1.47 L 33 loads");
+        products.set("035000446787", "ajax ultra orange dish liquid/hand soap 28 fl oz");
+        products.set("017801160277", "fiet electric 4 pack a21 led bulbs");
+        products.set("23NR01252101224", "nutribullet blender combo");
+        products.set("037000123439", "secret ph balanced poweder fresh scent 24 hour deodorant");
+        products.set("859139006083", " schmidt's natural deodorant 24 hour rose and vanilla scent");
+        products.set("757528032401", "takis crunchy fajita snack size");
+        products.set("195616000060", "rico baby wipes rich moisture 720 wipes 9 pack");
+        products.set("096619188727", "kirkland 174 diapers size 2");
+        products.set("052000047905", "gatorade gatorlyte rapid hyrdation orange flavored 20 fl oz");
+        products.set("9781639383740", "Muscle Cars Book");
+
+        barcodeEl.focus();
+        
+        barcodeEl.addEventListener('change', (event) => {
+
+            let barcodeProduct = products.get(barcodeEl.value);
+
+            //product card
+            let productCard = document.createElement('div');
+            productCard.classList.add('product-card');
+
+            //product image
+            let productImage = document.createElement('img');
+            productImage.src = './product-images/' + barcodeProduct.image;
+            productImage.classList.add('product-image');
+            productCard.appendChild(productImage);
+
+            //product info
+            let productInfo = document.createElement('div');
+            productInfo.classList.add('product-info');
+            productCard.appendChild(productInfo);
+
+            //title
+            let productTitle = document.createElement('h3');
+            productTitle.classList.add('product-title');
+            productTitle.innerText = (barcodeProduct) ? barcodeProduct.title : 'Product Not Found';
+            productInfo.appendChild(productTitle);
+            
+            //price
+            let productPrice = document.createElement('p');
+            productPrice.classList.add('product-price');
+            productPrice.innerText = (barcodeProduct) ? barcodeProduct.price : 'Product Not Found';
+            productInfo.appendChild(productPrice);
+            
+            //category
+            let productCategory = document.createElement('p');
+            productCategory.classList.add('product-category');
+            productCategory.innerText = (barcodeProduct) ? barcodeProduct.category : 'Product Not Found';
+            productInfo.appendChild(productCategory);
+            
+            //description
+            let productDescription = document.createElement('p');
+            productDescription.classList.add('product-description');
+            productDescription.innerText = (barcodeProduct) ? barcodeProduct.description : 'Product Not Found';
+            productInfo.appendChild(productDescription);
+            
+            const productsContainerEl = document.getElementById('products-container');
+            productsContainerEl.appendChild(productCard);
+            barcodeEl.value = '';
+        });
+
+    </script>
+</body>
+</html>

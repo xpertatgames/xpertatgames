@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>maps</title>
+    <style>
+      body,
+      html {
+        margin-top: 150px;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      canvas {
+        display: block;
+        background-color: darkgray;
+        margin: auto;
+        width: 600px;
+        height: 590px;
+        border-radius: 300px;
+    </style>
+  </head>
+  <body>
+    <!-- <svg viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg" >
+      <rect x="5" y="5" width="20" height="20"  stroke="red" fill="grey"/>
+      <circle cx="50" cy="50" r="30" />
+    </svg> -->
+
+    <canvas id="gameCanvas"></canvas>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+      "
+    >
+      <button onclick="window.location.reload()" style="font-size: 30px">
+        change map
+      </button>
+    </div>
+    <script>
+      const canvas = document.getElementById("gameCanvas");
+      const ctx = canvas.getContext("2d");
+
+      const tileSize = 32;
+      const mapWidth = 20;
+      const mapHeight = 15;
+
+      let worldMap = [];
+
+      // Generate a random world map
+      function generateWorldMap() {
+        for (let y = 0; y < mapHeight; y++) {
+          worldMap[y] = [];
+          for (let x = 0; x < mapWidth; x++) {
+            worldMap[y][x] = Math.random() < 0.6 ? 1 : 0; // 20% chance of a block being present
+          }
+        }
+      }
+
+      // Render the world map
+      function renderWorld() {
+        for (let y = 0; y < mapHeight; y++) {
+          for (let x = 0; x < mapWidth; x++) {
+            if (worldMap[y][x] === 1) {
+              ctx.fillStyle = "#000000"; // GREEN color
+              ctx.fillRect(x * tileSize, y * tileSize, tileSize, tileSize);
+            }
+          }
+        }
+      }
+
+      // Game loop
+      function gameLoop() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        renderWorld();
+        requestAnimationFrame(gameLoop);
+      }
+
+      // Initialize game
+      function init() {
+        canvas.width = mapWidth * tileSize;
+        canvas.height = mapHeight * tileSize;
+        generateWorldMap();
+        gameLoop();
+      }
+
+      init();
+    </script>
+  </body>
+</html>

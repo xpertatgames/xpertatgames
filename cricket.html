@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Document</title>
+    <style>
+      body {
+        background-image: url("aff.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .courier {
+        font-family: "Courier New", Courier, monospace;
+      }
+      .button {
+        border: 3px solid lightblue;
+        border-radius: 12px;
+        box-shadow: -3px -3px blue inset;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 190px;
+        height: 190px;
+        max-width: 190px;
+        max-height: 190px;
+        padding: 15px;
+        transition: transform 1s; /* Animation */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="courier" style="display: flex; justify-content: center">
+      <h1>Welcome to cricket-videos<span class="material-symbols-outlined">
+        toggle_off
+        </span></h1>
+    </div>
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+        <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDisabled" disabled>
+        <label class="form-check-label" for="flexSwitchCheckDisabled">Disabled switch checkbox input</label>
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabled" checked disabled>
+        <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Disabled checked switch checkbox input</label>
+      </div><div class="input-group flex-nowrap">
+        <span class="input-group-text" id="addon-wrapping">@</span>
+        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+      </div>
+
+  </body>
+</html>
